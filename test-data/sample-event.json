@@ -1,0 +1,27 @@
+{
+  "version": "0",
+  "id": "c4c6e6d3-573b-7bca-f6d2-f57df183c9bd",
+  "detail-type": "AWS API Call via CloudTrail",
+  "source": "aws.s3",
+  "account": "123456789012",
+  "time": "2025-07-18T23:12:47Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "eventName": "PutBucketAcl",
+    "requestParameters": {
+      "bucketName": "example-bucket",
+      "AccessControlPolicy": {
+        "Grants": [
+          {
+            "Grantee": {
+              "Type": "Group",
+              "URI": "http://acs.amazonaws.com/groups/global/AllUsers"
+            },
+            "Permission": "READ"
+          }
+        ]
+      }
+    }
+  }
+}
