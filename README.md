@@ -4,7 +4,7 @@
 
 ---
 
-## 🚨 Features
+## Features
 
 - Detects public access to Amazon S3 buckets
 - Simulates a security threat when a bucket is made public
@@ -14,7 +14,7 @@
 
 ---
 
-## 🛠️ Built With
+## Built With
 
 - AWS Lambda  
 - Amazon S3  
@@ -28,7 +28,7 @@
 
 ---
 
-## 👩🏽‍💻 Developed By
+##  Developed By
 
 **Aija Murry** – Cloud & Cybersecurity Professional  
 AWS Solutions Architect | Security+ Certified  
@@ -36,7 +36,7 @@ Atlanta, GA
 
 ---
 
-## 🔮 Future Plans
+## Future Plans
 
 - Add support for Slack or SMS alerting via SNS  
 - Expand Lambda functions to cover EC2 security group misconfigurations  
