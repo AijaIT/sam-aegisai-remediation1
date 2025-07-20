@@ -1,0 +1,42 @@
+import boto3
+
+def lambda_handler(event, context):
+    s3 = boto3.client('s3')
+    sns = boto3.client('sns')
+    
+    bucket_name = 'sam-config-bucket-438455503375'
+    topic_arn = 'arn:aws:sns:us-east-1:438455503375:sam-remediation-alerts'
+
+    try:
+        s3.put_public_access_block(
+            Bucket=bucket_name,
+            PublicAccessBlockConfiguration={
+                'BlockPublicAcls': True,
+                'IgnorePublicAcls': True,
+                'BlockPublicPolicy': True,
+                'RestrictPublicBuckets': True
+            }
+        )
+
+        # SNS Notification
+        message = f" SAM AegisAI Alert: Public access was blocked on bucket {bucket_name}."
+        sns.publish(
+            TopicArn=topic_arn,
+            Message=message,
+            Subject='[SAM AegisAI] S3 Remediation Alert'
+        )
+
+        print(f"[SUCCESS] Public access blocked for bucket: {bucket_name}")
+        return {
+            'statusCode': 200,
+            'body': f"Public access blocked for {bucket_name}"
+        }
+
+    except Exception as e:
+        print(f"[ERROR] Error: {str(e)}")
+        return {
+            'statusCode': 500,
+            'body': str(e)
+        }
+
+
