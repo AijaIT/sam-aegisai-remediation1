@@ -1,5 +1,12 @@
 # SAM AegisAI – S3 Bucket Remediation System
 
+## 🛡️ SAM AegisAI - Auto Remediation Architecture
+
+This project uses AWS Config Rules, EventBridge, and Lambda to detect and automatically remediate public S3 bucket access. Alerts are sent via Amazon SNS.
+
+![SAM AegisAI Architecture](https://i.imgur.com/VFkPgMz.png)
+
+
 **SAM AegisAI** is a lightweight automation tool designed to simulate and remediate public S3 bucket access violations using AWS Lambda, CloudWatch Events, AWS Config, and SNS. This proof-of-concept is ideal for small businesses or startups looking to implement DevSecOps-style cloud compliance on a budget.
 
 ---

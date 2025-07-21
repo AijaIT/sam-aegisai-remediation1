@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAM AegisAI - S3 Remediation Lambda Function
+
+Resources:
+  RemovePublicAccessFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: remove_public_access.lambda_handler
+      Runtime: python3.12
+      Role: arn:aws:iam::438455503375:role/sam-remediation-role
+      Timeout: 10
+      Events:
+        S3RemediationEvent:
+          Type: CloudWatchEvent
+          Properties:
+            Pattern:
+              source:
+                - "aws.config"
+              detail-type:
+                - "Config Rules Compliance Change"
+              detail:
+                messageType:
+                  - "ComplianceChangeNotification"
